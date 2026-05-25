@@ -1,0 +1,14 @@
+@{
+    ViewData["Title"] = "Product Detail";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (ViewBag.IsError == true)
+{
+    <p class="text-danger">@ViewBag.Message</p>
+}
+else
+{
+    <p>@ViewBag.Message</p>
+}

@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\CNLTWEB\\baitap1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AB7B8B71-BA9C-48E3-827B-B51385CFE126}|baitap1\\baitap1.csproj|d:\\cnltweb\\baitap1\\baitap1\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AB7B8B71-BA9C-48E3-827B-B51385CFE126}|baitap1\\baitap1.csproj|solutionrelative:baitap1\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB7B8B71-BA9C-48E3-827B-B51385CFE126}|baitap1\\baitap1.csproj|d:\\cnltweb\\baitap1\\baitap1\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AB7B8B71-BA9C-48E3-827B-B51385CFE126}|baitap1\\baitap1.csproj|solutionrelative:baitap1\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\CNLTWEB\\baitap1\\baitap1\\Pages\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "baitap1\\Pages\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\CNLTWEB\\baitap1\\baitap1\\Pages\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "baitap1\\Pages\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-21T00:27:31.159Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\CNLTWEB\\baitap1\\baitap1\\Pages\\Index.cshtml",
+              "RelativeDocumentMoniker": "baitap1\\Pages\\Index.cshtml",
+              "ToolTip": "D:\\CNLTWEB\\baitap1\\baitap1\\Pages\\Index.cshtml",
+              "RelativeToolTip": "baitap1\\Pages\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-21T00:26:48.983Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
