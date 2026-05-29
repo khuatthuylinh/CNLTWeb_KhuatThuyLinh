@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\CNLTWEB\\BookManagement\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C4C43E6C-DAC9-44F1-8D77-2A9177C774FB}|BookManagement\\BookManagement.csproj|d:\\cnltweb\\bookmanagement\\bookmanagement\\controllers\\bookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4C43E6C-DAC9-44F1-8D77-2A9177C774FB}|BookManagement\\BookManagement.csproj|solutionrelative:bookmanagement\\controllers\\bookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4C43E6C-DAC9-44F1-8D77-2A9177C774FB}|BookManagement\\BookManagement.csproj|d:\\cnltweb\\bookmanagement\\bookmanagement\\views\\book\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C4C43E6C-DAC9-44F1-8D77-2A9177C774FB}|BookManagement\\BookManagement.csproj|solutionrelative:bookmanagement\\views\\book\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4C43E6C-DAC9-44F1-8D77-2A9177C774FB}|BookManagement\\BookManagement.csproj|d:\\cnltweb\\bookmanagement\\bookmanagement\\views\\book\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C4C43E6C-DAC9-44F1-8D77-2A9177C774FB}|BookManagement\\BookManagement.csproj|solutionrelative:bookmanagement\\views\\book\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4C43E6C-DAC9-44F1-8D77-2A9177C774FB}|BookManagement\\BookManagement.csproj|d:\\cnltweb\\bookmanagement\\bookmanagement\\views\\book\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C4C43E6C-DAC9-44F1-8D77-2A9177C774FB}|BookManagement\\BookManagement.csproj|solutionrelative:bookmanagement\\views\\book\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4C43E6C-DAC9-44F1-8D77-2A9177C774FB}|BookManagement\\BookManagement.csproj|d:\\cnltweb\\bookmanagement\\bookmanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4C43E6C-DAC9-44F1-8D77-2A9177C774FB}|BookManagement\\BookManagement.csproj|solutionrelative:bookmanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\CNLTWEB\\BookManagement\\BookManagement\\Views\\Book\\Index.cshtml",
+              "RelativeDocumentMoniker": "BookManagement\\Views\\Book\\Index.cshtml",
+              "ToolTip": "D:\\CNLTWEB\\BookManagement\\BookManagement\\Views\\Book\\Index.cshtml",
+              "RelativeToolTip": "BookManagement\\Views\\Book\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-29T00:20:58.95Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BookController.cs",
+              "DocumentMoniker": "D:\\CNLTWEB\\BookManagement\\BookManagement\\Controllers\\BookController.cs",
+              "RelativeDocumentMoniker": "BookManagement\\Controllers\\BookController.cs",
+              "ToolTip": "D:\\CNLTWEB\\BookManagement\\BookManagement\\Controllers\\BookController.cs",
+              "RelativeToolTip": "BookManagement\\Controllers\\BookController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwAsAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T00:16:33.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\CNLTWEB\\BookManagement\\BookManagement\\Views\\Book\\Create.cshtml",
+              "RelativeDocumentMoniker": "BookManagement\\Views\\Book\\Create.cshtml",
+              "ToolTip": "D:\\CNLTWEB\\BookManagement\\BookManagement\\Views\\Book\\Create.cshtml",
+              "RelativeToolTip": "BookManagement\\Views\\Book\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-29T00:23:40.109Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Detail.cshtml",
+              "DocumentMoniker": "D:\\CNLTWEB\\BookManagement\\BookManagement\\Views\\Book\\Detail.cshtml",
+              "RelativeDocumentMoniker": "BookManagement\\Views\\Book\\Detail.cshtml",
+              "ToolTip": "D:\\CNLTWEB\\BookManagement\\BookManagement\\Views\\Book\\Detail.cshtml",
+              "RelativeToolTip": "BookManagement\\Views\\Book\\Detail.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-29T00:22:53.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\CNLTWEB\\BookManagement\\BookManagement\\Program.cs",
+              "RelativeDocumentMoniker": "BookManagement\\Program.cs",
+              "ToolTip": "D:\\CNLTWEB\\BookManagement\\BookManagement\\Program.cs",
+              "RelativeToolTip": "BookManagement\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T00:29:19.977Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

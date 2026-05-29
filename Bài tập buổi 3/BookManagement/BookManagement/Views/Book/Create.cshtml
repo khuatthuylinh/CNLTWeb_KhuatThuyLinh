@@ -1,0 +1,23 @@
+﻿@model BookManagement.Models.Book
+
+<h2>Thêm sách</h2>
+
+<form method="post">
+
+    <p>
+        Tên sách:
+        <input type="text" name="Name" />
+    </p>
+
+    <p>
+        Giá:
+        <input type="number" name="Price" />
+    </p>
+
+    <button type="submit">Thêm</button>
+
+</form>
+
+<h3 style="color:green">
+    @ViewBag.Message
+</h3>

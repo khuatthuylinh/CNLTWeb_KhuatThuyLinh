@@ -1,0 +1,24 @@
+@model LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Đăng nhập</h2>
+
+@if (ViewBag.Message != null)
+{
+    var alertClass = ViewBag.Message == "Login success" ? "alert-success" : "alert-danger";
+    <div class="alert @alertClass" role="alert">@ViewBag.Message</div>
+}
+
+<form asp-controller="Account" asp-action="Login" method="post">
+    <div class="mb-3">
+        <label asp-for="Username" class="form-label"></label>
+        <input asp-for="Username" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label"></label>
+        <input asp-for="Password" type="password" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
