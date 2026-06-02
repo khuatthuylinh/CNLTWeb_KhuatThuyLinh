@@ -1,0 +1,15 @@
+@model Book
+
+@{
+    ViewData["Title"] = "Chi tiết sách";
+}
+
+<h2>Chi tiết sách</h2>
+
+<p><b>Id:</b> @Model.Id</p>
+<p><b>Name:</b> @Model.Name</p>
+<p><b>Price:</b> @Model.Price</p>
+
+<br />
+
+<a asp-action="Index">Quay lại danh sách</a>
