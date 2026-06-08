@@ -1,0 +1,23 @@
+﻿@model EmployeeManagement.Models.Employee
+
+@{
+    ViewData["Title"] = "Xác nhận xóa";
+}
+
+<div class="alert alert-danger my-4">
+    <h4>⚠️ Cảnh báo hành động!</h4>
+    <p>Bạn có chắc muốn xóa nhân sự này vĩnh viễn không?</p>
+</div>
+
+<div class="card border-danger mb-4">
+    <div class="card-body">
+        <h5><strong>Họ và Tên:</strong> @Model.FullName</h5>
+        <p><strong>Phòng ban:</strong> @Model.Department</p>
+    </div>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Xác nhận Xóa</button>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Hủy quay lại</a>
+</form>

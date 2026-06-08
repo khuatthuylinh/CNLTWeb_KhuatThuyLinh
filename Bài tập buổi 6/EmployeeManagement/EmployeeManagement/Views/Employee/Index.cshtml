@@ -1,0 +1,57 @@
+﻿@model IEnumerable<EmployeeManagement.Models.Employee>
+
+@{
+    ViewData["Title"] = "Danh sách nhân viên";
+}
+
+<div class="d-flex justify-content-between align-items-center my-4">
+    <h2>Danh Sách Nhân Viên</h2>
+    <a asp-action="Create" class="btn btn-success">+ Thêm Nhân Viên</a>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<form asp-action="Index" method="get" class="row g-3 mb-4">
+    <div class="col-md-4">
+        <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control" placeholder="Tìm tên hoặc phòng ban..." />
+    </div>
+    <div class="col-col-md-2">
+        <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+    </div>
+</form>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Mã NV</th>
+            <th>Họ và Tên</th>
+            <th>Phòng Ban</th>
+            <th>Lương</th>
+            <th>Trạng Thái</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.FullName</td>
+                <td>@item.Department</td>
+                <td>@string.Format("{0:N0} đ", item.BaseSalary)</td>
+                <td>@item.Status</td>
+                <td>
+                    <a asp-action="Detail" asp-route-id="@item.Id" class="btn btn-sm btn-info text-white">Xem</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning text-white">Sửa</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

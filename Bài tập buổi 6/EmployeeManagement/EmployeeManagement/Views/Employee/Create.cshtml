@@ -1,0 +1,56 @@
+﻿@model EmployeeManagement.Models.Employee
+
+@{
+    ViewData["Title"] = "Thêm nhân viên";
+}
+
+<h2 class="my-4">Thêm Nhân Viên Mới</h2>
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" method="post" class="p-4 border rounded bg-light">
+            <div class="mb-3">
+                <label asp-for="FullName" class="form-label">Họ và Tên</label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Department" class="form-label">Phòng ban</label>
+                <select asp-for="Department" class="form-select">
+                    <option value=""> Chọn phòng ban </option>
+                    <option value="Hành chính">Hành chính</option>
+                    <option value="Nhân sự">Nhân sự</option>
+                    <option value="Kỹ thuật">Kỹ thuật</option>
+                </select>
+                <span asp-validation-for="Department" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="BaseSalary" class="form-label">Lương cơ bản</label>
+                <input asp-for="BaseSalary" type="number" class="form-control" />
+                <span asp-validation-for="BaseSalary" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Status" class="form-label">Trạng thái ban đầu</label>
+                <select asp-for="Status" class="form-select">
+                    <option value=""> Chọn trạng thái </option>
+                    <option value="Thử việc">Thử việc</option>
+                    <option value="Đang làm việc">Đang làm việc</option>
+                    <option value="Đã nghỉ việc">Đã nghỉ việc</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-success">Lưu lại</button>
+            <a asp-action="Index" class="btn btn-secondary ms-2">Hủy bỏ</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.13/jquery.validate.unobtrusive.min.js"></script>
+}
