@@ -1,0 +1,5 @@
+1. Kết nối DB đăng ký ở đâu?
+Connection string được khai báo trong appsettings.json (key ConnectionStrings:BookManagement). Trong Program.cs, BookRepository được đăng ký vào DI container bằng AddSingleton<BookRepository>(). Khi khởi tạo, BookRepository nhận IConfiguration, đọc connection string và lưu vào biến _connectionString để dùng cho các câu SQL. Ngoài ra, DatabaseInitializer.Initialize() cũng được gọi trong Program.cs để tự tạo database và bảng Book nếu chưa có.
+
+2. CRUD gọi qua BookRepository như thế nào?
+BookController nhận BookRepository qua constructor (dependency injection). Mỗi action gọi hàm repository tương ứng: Index gọi Search() để xem danh sách, tìm kiếm và sắp xếp; Detail gọi GetById(); Create (POST) gọi Create(); Edit gọi GetById() rồi Update(); Delete gọi GetById() rồi Delete(). Luồng xử lý: người dùng gửi request → Controller → BookRepository thực thi SQL trên SQL Server → trả kết quả về View.
