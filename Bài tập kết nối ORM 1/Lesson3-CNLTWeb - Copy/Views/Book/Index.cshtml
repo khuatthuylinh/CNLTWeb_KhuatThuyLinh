@@ -1,0 +1,95 @@
+@model BookIndexViewModel
+@{
+    ViewData["Title"] = "Danh sách sách";
+}
+
+<h1>Book Management</h1>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Thêm sách</a>
+</p>
+
+<form asp-action="Index" method="get" class="row g-2 align-items-end mb-3">
+    <div class="col-md-4">
+        <label for="searchName" class="form-label">Tìm theo tên sách</label>
+        <input type="text" id="searchName" name="searchName" value="@Model.SearchName"
+               class="form-control" placeholder="Nhập tên sách..." />
+    </div>
+    <div class="col-md-3">
+        <label for="sortOrder" class="form-label">Sắp xếp theo giá</label>
+        <select id="sortOrder" name="sortOrder" class="form-select">
+            @if (Model.SortOrder == "id")
+            {
+                <option value="id" selected>Mặc định (Id)</option>
+            }
+            else
+            {
+                <option value="id">Mặc định (Id)</option>
+            }
+
+            @if (Model.SortOrder == "price_asc")
+            {
+                <option value="price_asc" selected>Giá tăng dần</option>
+            }
+            else
+            {
+                <option value="price_asc">Giá tăng dần</option>
+            }
+
+            @if (Model.SortOrder == "price_desc")
+            {
+                <option value="price_desc" selected>Giá giảm dần</option>
+            }
+            else
+            {
+                <option value="price_desc">Giá giảm dần</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-auto">
+        <button type="submit" class="btn btn-secondary">Tìm kiếm</button>
+        @if (!string.IsNullOrWhiteSpace(Model.SearchName) || Model.SortOrder != "id")
+        {
+            <a asp-action="Index" class="btn btn-outline-secondary">Xóa lọc</a>
+        }
+    </div>
+</form>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (!Model.Books.Any())
+        {
+            <tr>
+                <td colspan="5" class="text-center">Không tìm thấy sách nào.</td>
+            </tr>
+        }
+        @foreach (var book in Model.Books)
+        {
+            <tr>
+                <td>@book.Id</td>
+                <td>@book.Name</td>
+                <td>@book.Author</td>
+                <td>@book.Price</td>
+                <td>
+                    <a asp-action="Detail" asp-route-id="@book.Id">Chi tiết</a> |
+                    <a asp-action="Edit" asp-route-id="@book.Id">Sửa</a> |
+                    <a asp-action="Delete" asp-route-id="@book.Id">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
