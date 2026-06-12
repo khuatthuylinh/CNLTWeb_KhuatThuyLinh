@@ -1,15 +1,18 @@
 using Lesson3_CNLTWeb.Data;
 using Lesson3_CNLTWeb.Middleware;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<BookRepository>();
+builder.Services.AddDbContext<BookDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("BookManagement")));
+builder.Services.AddScoped<BookRepository>();
 
 var app = builder.Build();
 
-DatabaseInitializer.Initialize(app.Configuration);
+DatabaseInitializer.Initialize(app.Services);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
