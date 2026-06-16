@@ -1,0 +1,56 @@
+@model Book
+@{
+    ViewData["Title"] = "Sửa sách";
+}
+
+<h1>Sửa sách</h1>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="Images" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Author" class="form-label"></label>
+        <input asp-for="Author" class="form-control" />
+        <span asp-validation-for="Author" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.Images))
+    {
+        <div class="mb-3">
+            <label class="form-label">Hình ảnh hiện tại:</label>
+            <div class="d-flex flex-wrap gap-2">
+                @foreach (var img in Model.Images.Split(';', StringSplitOptions.RemoveEmptyEntries))
+                {
+                    <img src="/uploads/@img" alt="Product Image" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;" />
+                }
+            </div>
+        </div>
+    }
+
+    <div class="mb-3">
+        <label class="form-label">Chọn hình ảnh mới (sẽ thay thế hình ảnh hiện tại)</label>
+        <input type="file" name="ImageFiles" class="form-control" multiple accept=".jpg,.png" />
+        <span class="text-danger">@Html.ValidationMessage("ImageFiles")</span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Lưu</button>
+    <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
