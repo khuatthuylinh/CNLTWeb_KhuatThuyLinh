@@ -1,0 +1,38 @@
+@model MID_BIT247620.Models.RoomType_BIT247620
+
+@{
+    ViewData["Title"] = "Xóa Loại phòng";
+}
+
+<div class="container mt-3">
+    <h2>Xác nhận xóa loại phòng</h2>
+    <hr />
+    <h3 class="text-danger">Bạn có chắc chắn muốn xóa loại phòng này không?</h3>
+    
+    <dl class="row mt-3">
+        <dt class="col-sm-3">Mã loại</dt>
+        <dd class="col-sm-9">@Model.Id</dd>
+
+        <dt class="col-sm-3">Tên loại</dt>
+        <dd class="col-sm-9">@Model.Name</dd>
+
+        <dt class="col-sm-3">Mô tả</dt>
+        <dd class="col-sm-9">@Model.Description</dd>
+
+        <dt class="col-sm-3">Số phòng đang dùng</dt>
+        <dd class="col-sm-9 text-danger">@Model.Rooms.Count phòng</dd>
+    </dl>
+
+    @if (Model.Rooms.Any())
+    {
+        <div class="alert alert-warning">
+            Chú ý: Loại phòng này đang có phòng sử dụng. Bạn sẽ bị hệ thống chặn khi thực hiện xóa.
+        </div>
+    }
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger" @(Model.Rooms.Any() ? "disabled" : "")>Xác nhận xóa</button>
+        <a asp-action="Index" class="btn btn-secondary">Hủy bỏ</a>
+    </form>
+</div>

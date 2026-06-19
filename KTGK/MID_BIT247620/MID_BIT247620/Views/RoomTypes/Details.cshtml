@@ -1,0 +1,67 @@
+@model MID_BIT247620.Models.RoomType_BIT247620
+
+@{
+    ViewData["Title"] = "Chi tiết Loại phòng";
+}
+
+<div class="container mt-3">
+    <h2>Chi tiết loại phòng</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-5">
+            <dl class="row">
+                <dt class="col-sm-4">Mã loại</dt>
+                <dd class="col-sm-8">@Model.Id</dd>
+
+                <dt class="col-sm-4">Tên loại phòng</dt>
+                <dd class="col-sm-8">@Model.Name</dd>
+
+                <dt class="col-sm-4">Mô tả</dt>
+                <dd class="col-sm-8">@Model.Description</dd>
+            </dl>
+            <div class="mt-3">
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Sửa</a> | 
+                <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Xóa</a> | 
+                <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <h4>Danh sách phòng thuộc loại này (@Model.Rooms.Count)</h4>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Tên phòng</th>
+                        <th>Giá thuê</th>
+                        <th>Diện tích</th>
+                        <th>Trạng thái</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Rooms.Any())
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center">Chưa có phòng nào.</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var room in Model.Rooms)
+                        {
+                            <tr>
+                                <td>@room.Name</td>
+                                <td>@room.Price.ToString("N0") đ/tháng</td>
+                                <td>@room.Area m²</td>
+                                <td>@(room.IsAvailable ? "Còn phòng" : "Đã thuê")</td>
+                                <td>
+                                    <a asp-controller="Rooms" asp-action="Details" asp-route-id="@room.Id" class="btn btn-sm btn-info">Xem phòng</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

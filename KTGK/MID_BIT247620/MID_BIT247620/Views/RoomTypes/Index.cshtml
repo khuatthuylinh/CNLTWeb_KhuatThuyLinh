@@ -1,0 +1,66 @@
+@model IEnumerable<MID_BIT247620.Models.RoomType_BIT247620>
+
+@{
+    ViewData["Title"] = "Danh sách Loại phòng";
+}
+
+<div class="container mt-3">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <div class="row mb-3">
+        <div class="col-md-8">
+            <h2>Quản lý loại phòng</h2>
+        </div>
+        <div class="col-md-4 text-end">
+            <a asp-action="Create" class="btn btn-primary">Thêm loại phòng mới</a>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Mã loại</th>
+                <th>Tên loại phòng</th>
+                <th>Mô tả</th>
+                <th>Số phòng</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="5" class="text-center">Chưa có loại phòng nào.</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Description</td>
+                        <td>@item.Rooms.Count</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Sửa</a> | 
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Xem</a> | 
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,128 @@
+@model MID_BIT247620.Models.Room_BIT247620
+
+@{
+    ViewData["Title"] = "Chi tiết Phòng trọ";
+}
+
+<div class="container mt-3">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <h2>Chi tiết phòng trọ: @Model.Name</h2>
+    <hr />
+
+    <div class="row">
+        <!-- Room details -->
+        <div class="col-md-5">
+            <h4>Thông tin phòng</h4>
+            <dl class="row">
+                <dt class="col-sm-4">Tên phòng</dt>
+                <dd class="col-sm-8">@Model.Name</dd>
+
+                <dt class="col-sm-4">Loại phòng</dt>
+                <dd class="col-sm-8">@(Model.RoomType?.Name ?? "N/A")</dd>
+
+                <dt class="col-sm-4">Giá thuê</dt>
+                <dd class="col-sm-8 text-danger fw-bold">@Model.Price.ToString("N0") đ/tháng</dd>
+
+                <dt class="col-sm-4">Diện tích</dt>
+                <dd class="col-sm-8">@Model.Area m²</dd>
+
+                <dt class="col-sm-4">Đơn giá / m²</dt>
+                <dd class="col-sm-8 text-primary fw-bold">@Model.PricePerSquareMeter.ToString("N0") đ/m²</dd>
+
+                <dt class="col-sm-4">Trạng thái</dt>
+                <dd class="col-sm-8">@(Model.IsAvailable ? "Còn trống" : "Đã thuê")</dd>
+
+                <dt class="col-sm-4">Mô tả</dt>
+                <dd class="col-sm-8">@Model.Description</dd>
+            </dl>
+            <div class="mt-3">
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Sửa phòng</a> | 
+                <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Xóa phòng</a> | 
+                <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+            </div>
+        </div>
+
+        <!-- Image Management -->
+        <div class="col-md-7">
+            <h4>Thêm ảnh mới</h4>
+            <form asp-action="AddImage" method="post" class="mb-4">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="roomId" value="@Model.Id" />
+                <div class="mb-2">
+                    <label class="form-label fw-bold">Đường dẫn ảnh (URL)</label>
+                    <input type="url" name="imageUrl" class="form-control" required />
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" name="isThumbnail" id="isThumbnail" value="true">
+                    <label class="form-check-label" for="isThumbnail">Đặt làm ảnh đại diện</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">Thêm ảnh</button>
+            </form>
+
+            <h4>Danh sách hình ảnh (@Model.RoomImages.Count)</h4>
+            @if (!Model.RoomImages.Any())
+            {
+                <p class="text-warning fw-bold">Phòng trọ này chưa có hình ảnh nào.</p>
+            }
+            else
+            {
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Hình ảnh</th>
+                            <th>Ảnh đại diện</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var img in Model.RoomImages)
+                        {
+                            <tr>
+                                <td>
+                                    <img src="@img.ImageUrl" alt="room image" style="width: 150px; height: 100px; object-fit: cover;" onerror="this.onerror=null;this.src='https://placehold.co/150x100?text=Loi+anh';" />
+                                </td>
+                                <td>
+                                    @if (img.IsThumbnail)
+                                    {
+                                        <strong class="text-success">[Ảnh đại diện]</strong>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">Không</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (!img.IsThumbnail)
+                                    {
+                                        <form asp-action="SetThumbnail" method="post" class="d-inline">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="imageId" value="@img.Id" />
+                                            <button type="submit" class="btn btn-sm btn-outline-primary">Đặt làm đại diện</button>
+                                        </form>
+                                    }
+                                    <form asp-action="DeleteImage" method="post" class="d-inline" onsubmit="return confirm('Xóa ảnh này?');">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="imageId" value="@img.Id" />
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">Xóa</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+</div>

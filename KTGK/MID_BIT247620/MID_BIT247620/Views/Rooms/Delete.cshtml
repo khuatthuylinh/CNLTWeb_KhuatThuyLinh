@@ -1,0 +1,35 @@
+@model MID_BIT247620.Models.Room_BIT247620
+
+@{
+    ViewData["Title"] = "Xóa Phòng trọ";
+}
+
+<div class="container mt-3">
+    <h2>Xác nhận xóa phòng trọ</h2>
+    <hr />
+    <h3 class="text-danger">Bạn có chắc chắn muốn xóa phòng trọ này không?</h3>
+    <p class="text-muted">Lưu ý: Tất cả hình ảnh liên quan của phòng này sẽ bị xóa khỏi cơ sở dữ liệu.</p>
+
+    <dl class="row mt-3">
+        <dt class="col-sm-3">Tên phòng</dt>
+        <dd class="col-sm-9">@Model.Name</dd>
+
+        <dt class="col-sm-3">Loại phòng</dt>
+        <dd class="col-sm-9">@(Model.RoomType?.Name ?? "N/A")</dd>
+
+        <dt class="col-sm-3">Giá thuê</dt>
+        <dd class="col-sm-9 text-danger fw-bold">@Model.Price.ToString("N0") đ/tháng</dd>
+
+        <dt class="col-sm-3">Diện tích</dt>
+        <dd class="col-sm-9">@Model.Area m²</dd>
+
+        <dt class="col-sm-3">Trạng thái</dt>
+        <dd class="col-sm-9">@(Model.IsAvailable ? "Còn trống" : "Đã thuê")</dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Xác nhận xóa</button>
+        <a asp-action="Index" class="btn btn-secondary">Hủy bỏ</a>
+    </form>
+</div>

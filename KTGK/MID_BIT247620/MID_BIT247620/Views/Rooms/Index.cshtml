@@ -1,0 +1,181 @@
+@model IEnumerable<MID_BIT247620.Models.Room_BIT247620>
+
+@{
+    ViewData["Title"] = "Danh sách Phòng trọ";
+    var searchName = ViewBag.SearchName as string;
+    var maxPrice = ViewBag.MaxPrice as decimal?;
+    var selectedRoomTypeId = ViewBag.SelectedRoomTypeId as int?;
+    var isAvailable = ViewBag.IsAvailable as bool?;
+    var sortBy = ViewBag.SortBy as string;
+}
+
+<div class="container mt-3">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <div class="row mb-3">
+        <div class="col-md-8">
+            <h2>Quản lý phòng trọ</h2>
+        </div>
+        <div class="col-md-4 text-end">
+            <a asp-action="Create" class="btn btn-primary">Thêm phòng trọ mới</a>
+        </div>
+    </div>
+
+    <!-- Search Form -->
+    <div class="card p-3 mb-4 bg-light">
+        <form method="get" asp-action="Index">
+            <div class="row g-2">
+                <div class="col-md-3">
+                    <label for="searchName" class="form-label fw-bold">Tên phòng</label>
+                    <input type="text" class="form-control" id="searchName" name="searchName" value="@searchName" placeholder="Nhập từ khóa..." />
+                </div>
+                <div class="col-md-3">
+                    <label for="roomTypeId" class="form-label fw-bold">Loại phòng</label>
+                    <select class="form-select" id="roomTypeId" name="roomTypeId" asp-items="ViewBag.RoomTypes">
+                        <option value="">-- Tất cả loại --</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label for="isAvailable" class="form-label fw-bold">Trạng thái</label>
+                    <select class="form-select" id="isAvailable" name="isAvailable">
+                        <option value="">-- Tất cả --</option>
+                        @if (isAvailable == true)
+                        {
+                            <option value="true" selected>Còn trống</option>
+                            <option value="false">Đã thuê</option>
+                        }
+                        else if (isAvailable == false)
+                        {
+                            <option value="true">Còn trống</option>
+                            <option value="false" selected>Đã thuê</option>
+                        }
+                        else
+                        {
+                            <option value="true">Còn trống</option>
+                            <option value="false">Đã thuê</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label for="maxPrice" class="form-label fw-bold">Giá tối đa</label>
+                    <input type="number" class="form-control" id="maxPrice" name="maxPrice" value="@maxPrice" />
+                </div>
+                <div class="col-md-2">
+                    <label for="sortBy" class="form-label fw-bold">Sắp xếp</label>
+                    <select class="form-select" id="sortBy" name="sortBy">
+                        <option value="">Mặc định</option>
+                        @if (sortBy == "price_asc")
+                        {
+                            <option value="price_asc" selected>Giá tăng dần</option>
+                            <option value="price_desc">Giá giảm dần</option>
+                            <option value="area_desc">Diện tích giảm dần</option>
+                        }
+                        else if (sortBy == "price_desc")
+                        {
+                            <option value="price_asc">Giá tăng dần</option>
+                            <option value="price_desc" selected>Giá giảm dần</option>
+                            <option value="area_desc">Diện tích giảm dần</option>
+                        }
+                        else if (sortBy == "area_desc")
+                        {
+                            <option value="price_asc">Giá tăng dần</option>
+                            <option value="price_desc">Giá giảm dần</option>
+                            <option value="area_desc" selected>Diện tích giảm dần</option>
+                        }
+                        else
+                        {
+                            <option value="price_asc">Giá tăng dần</option>
+                            <option value="price_desc">Giá giảm dần</option>
+                            <option value="area_desc">Diện tích giảm dần</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="mt-3 text-end">
+                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                <a asp-action="Index" class="btn btn-secondary">Xóa lọc</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Table List -->
+    <table class="table table-bordered table-striped align-middle">
+        <thead>
+            <tr>
+                <th>Ảnh đại diện</th>
+                <th>Tên phòng</th>
+                <th>Loại phòng</th>
+                <th>Giá thuê</th>
+                <th>Diện tích</th>
+                <th>Giá / m²</th>
+                <th>Trạng thái</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="8" class="text-center text-muted py-4">Không tìm thấy phòng trọ nào phù hợp với điều kiện tìm kiếm.</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var item in Model)
+                {
+                    var thumbnail = item.RoomImages.FirstOrDefault(i => i.IsThumbnail);
+                    var imageUrl = thumbnail?.ImageUrl;
+                    var hasNoImage = !item.RoomImages.Any();
+
+                    <tr>
+                        <td style="width: 120px; text-align: center;">
+                            @if (hasNoImage)
+                            {
+                                <span class="text-danger small fw-bold">Chưa có ảnh</span>
+                            }
+                            else if (!string.IsNullOrEmpty(imageUrl))
+                            {
+                                <img src="@imageUrl" alt="thumbnail" style="width: 100px; height: 75px; object-fit: cover;" onerror="this.onerror=null;this.src='https://placehold.co/100x75?text=Loi+anh';" />
+                            }
+                            else
+                            {
+                                <span class="text-muted small">Không có đại diện</span>
+                            }
+                        </td>
+                        <td>@item.Name</td>
+                        <td>@(item.RoomType?.Name ?? "N/A")</td>
+                        <td class="text-danger fw-bold">@item.Price.ToString("N0") đ</td>
+                        <td>@item.Area m²</td>
+                        <td>@item.PricePerSquareMeter.ToString("N0") đ</td>
+                        <td>
+                            @if (item.IsAvailable)
+                            {
+                                <span class="text-success fw-bold">Còn trống</span>
+                            }
+                            else
+                            {
+                                <span class="text-danger fw-bold">Đã thuê</span>
+                            }
+                        </td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Chi tiết</a> | 
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Sửa</a> | 
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
